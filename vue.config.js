@@ -1,5 +1,5 @@
 module.exports = {
-    base: '/vue-4-router'/,
+    base: '/vue-4-router/',
     devServer: {
       proxy: {
         '/api': {
