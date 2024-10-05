@@ -1,30 +1,16 @@
 <script setup>
-import axios from "axios";
-import { computed, ref, watch } from "vue";
+import { computed, onMounted, ref, watch } from "vue";
 import { useRoute } from "vue-router";
 import SourceData from "../data.json";
-
-const client = axios.create({
-  baseURL: "https://travel-dummy-api.netlify.app/",
-});
+import { getData } from '../components/api.ts'
 
 const route = useRoute();
 const destinationId = computed(() => route.params.id);
 const destination = ref(null);
 
-const getData = async (place) => {
-  try {
-    const response = await client.get(`/${place}`);
-    destination.value = response.data;
-  } catch (error) {
-    console.error("Error fetching data:", error);
-    destination.value = null; 
-  }
-};
-
 watch(() => route.params.slug, (newSlug) => {
   if (newSlug) {
-    getData(newSlug);
+    getData(newSlug).then((res) => destination.value = res);
   }
 });
 
