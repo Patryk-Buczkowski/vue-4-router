@@ -25,7 +25,6 @@ onMounted(() => {
 <template>
   <section v-if="destination" class="destination">
     <h2>{{ destination.name }}</h2>
-    <p>{{console.log(destintion.image)}}</p>
     <div class="destination-details">
       <img :src="`/vue-4-router/images/${destination.image}`" :alt="destination.name" />
       <p>{{ destination.description }}</p>
