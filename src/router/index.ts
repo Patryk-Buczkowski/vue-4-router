@@ -3,13 +3,13 @@ import Home from "../views/Home.vue";
 
 const routes = [
   { path: "/", name: "Home", component: Home },
-  { path: "/destination/:id/:slug", name: "destination.show", component: () => import("../views/DestinationShow.vue")}
+  { path: "/destination/:id/:slug", name: "destination.show", component: () => import("../views/DestinationShow.vue") },
 ];
 
 const router = createRouter({
   history: createWebHistory(),
   routes,
-  linkActiveClass: 'activ-link'
+  linkActiveClass: "active-link",
 });
 
 export default router;
