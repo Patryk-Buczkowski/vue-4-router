@@ -1,5 +1,6 @@
 {
-  "name": "vue-4-router",
+  "name": "travel-app",
+  "homepage": "https://karanelus.github.io/travel-app/",
   "private": true,
   "version": "0.0.0",
   "type": "module",
