@@ -14,6 +14,12 @@ watch(() => route.params.slug, (newSlug) => {
   }
 });
 
+onMounted(() => {
+  const slug = route.params.slug;
+  getData(slug).then((res) => destination.value = res);
+
+})
+
 </script>
 
 <template>

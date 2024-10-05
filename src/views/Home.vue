@@ -1,8 +1,9 @@
 <script setup>
-import { ref } from "vue";
 import sourceData from "../data.json";
+import { computed, ref, watchEffect } from "vue";
 
-const destinations = ref(sourceData.destinations);
+const destinations = ref(sourceData.destinations)
+
 </script>
 
 <template>
