@@ -5,8 +5,8 @@ import SourceData from "../data.json";
 import { getData } from "../components/api.ts";
 import ExperiencesCard from "../components/ExperiencesCard.vue";
 
+
 const route = useRoute();
-const destinationId = computed(() => route.params.id);
 const destination = ref(null);
 
 const fetchData = async (slug) => {
@@ -54,8 +54,7 @@ watch(
         :key="experience.slug"
         :to="{name: 'experience.show', params: {experienceSlug: experience.slug}}"
       >
-      <p> {{console.log('l', experience) }}</p>
-        <ExperiencesCard v-if="experience" :experience="experience" />
+        <ExperiencesCard :experience="experience" />
       </RouterLink>
     </div>
   </section>
