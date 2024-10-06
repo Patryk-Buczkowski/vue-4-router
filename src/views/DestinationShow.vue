@@ -4,6 +4,7 @@ import { useRoute } from "vue-router";
 import SourceData from "../data.json";
 import { getData } from "../components/api.ts";
 import ExperiencesCard from "../components/ExperiencesCard.vue";
+import GoBack from "../components/GoBack.vue";
 
 
 const route = useRoute();
@@ -36,7 +37,8 @@ watch(
 
 <template>
   <section v-if="destination" class="destination">
-    <h2>{{ destination.name }}</h2>
+    <h1>{{ destination.name }}</h1>
+    <GoBack />
     <div class="destination-details">
       <img
         :src="`/vue-4-router/images/${destination.image}`"
@@ -57,5 +59,6 @@ watch(
         <ExperiencesCard :experience="experience" />
       </RouterLink>
     </div>
+    <RouterView />
   </section>
 </template>
