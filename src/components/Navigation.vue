@@ -20,14 +20,14 @@ const destinations = ref(sourceData.destinations)
 </template>
 
 <style>
-#nav .activ-link {
+#nav .active-link {
   scale: 125%;
   color: blue;
   border-bottom: 2px solid navy;
 }
 
 
-#logo.activ-link {
+#logo.active-link {
   text-decoration: none;
   color: rgb(42, 165, 124);
   border-bottom: none;
