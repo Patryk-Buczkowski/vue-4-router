@@ -60,7 +60,7 @@ const router = createRouter({
   linkActiveClass: "active-link",
   scrollBehavior(_to, _from, savedPosition) {
     return savedPosition || new Promise((resolve) => {
-      setTimeout(() => resolve({top: scrollPosition}), 301)
+      setTimeout(() => resolve({top: scrollPosition.value}), 301)
     })
   },
 });
