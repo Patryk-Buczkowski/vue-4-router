@@ -6,12 +6,13 @@ import {
 } from "vue-router";
 import Home from "../views/Home.vue";
 import { getData } from "../components/api";
+import { ref } from "vue";
 
-let scrollPosition: number;
+const scrollPosition = ref(0);
 
 document.addEventListener("scroll", () => {
-  scrollPosition = window.scrollY;
-  console.log("Pozycja scrolla podczas przewijania:", scrollPosition);
+  scrollPosition.value = window.scrollY;
+  console.log("Pozycja scrolla podczas przewijania:", scrollPosition.value);
 });
 
 const checkUserAccess = async (id: string, slug: string) => {
