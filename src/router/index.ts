@@ -7,8 +7,9 @@ import {
 import Home from "../views/Home.vue";
 import { getData } from "../components/api";
 import { ref } from "vue";
+import { useScrollStore } from "../stores/scrollStore";
 
-const scrollPosition = ref(0);
+const scrollPosition = ref(window.scrollY);
 
 document.addEventListener("scroll", () => {
   scrollPosition.value = window.scrollY;
@@ -55,14 +56,28 @@ const routes = [
 ];
 
 const router = createRouter({
-  history: createWebHistory("/vue-4-router/"),
+  history: createWebHistory('/vue-4-router/'),
   routes,
-  linkActiveClass: "active-link",
+  linkActiveClass: 'active-link',
   scrollBehavior(_to, _from, savedPosition) {
-    return savedPosition || new Promise((resolve) => {
-      setTimeout(() => resolve({top: scrollPosition.value}), 301)
-    })
+    const scrollStore = useScrollStore();
+  
+    document.addEventListener('scroll', () => {
+      scrollStore.setScrollPosition(window.scrollY); 
+      console.log('Zapisano pozycję scrolla:', scrollStore.scrollPosition);
+    });
+  
+    if (savedPosition) {
+      console.log('Zapisana pozycja:', savedPosition);
+      return savedPosition;
+    } else {
+      return new Promise((resolve) => {
+        console.log('Ustawiam scrollTop na:', 350); // Możesz użyć konkretnej liczby np. 350
+        resolve({ top: 350 }); // Spróbuj z konkretną liczbą
+      });
+    }
   },
+  
 });
 
 export default router;
