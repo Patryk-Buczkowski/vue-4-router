@@ -6,15 +6,7 @@ import {
 } from "vue-router";
 import Home from "../views/Home.vue";
 import { getData } from "../components/api";
-import { ref } from "vue";
 import { useScrollStore } from "../stores/scrollStore";
-
-const scrollPosition = ref(window.scrollY);
-
-document.addEventListener("scroll", () => {
-  scrollPosition.value = window.scrollY;
-  console.log("Pozycja scrolla podczas przewijania:", scrollPosition.value);
-});
 
 const checkUserAccess = async (id: string, slug: string) => {
   return await getData(slug).then((res) => (res.id == id ? true : false));
@@ -56,28 +48,34 @@ const routes = [
 ];
 
 const router = createRouter({
-  history: createWebHistory('/vue-4-router/'),
+  history: createWebHistory("/vue-4-router/"),
   routes,
-  linkActiveClass: 'active-link',
+  linkActiveClass: "active-link",
   scrollBehavior(_to, _from, savedPosition) {
     const scrollStore = useScrollStore();
-  
-    document.addEventListener('scroll', () => {
-      scrollStore.setScrollPosition(window.scrollY); 
-      console.log('Zapisano pozycję scrolla:', scrollStore.scrollPosition);
+
+    document.addEventListener("scroll", () => {
+      if (window.scrollY !== 0) {
+        scrollStore.setScrollPosition(window.scrollY);
+        console.log("Zapisano pozycję scrolla:", scrollStore.scrollPosition);
+      }
     });
-  
-    if (savedPosition) {
-      console.log('Zapisana pozycja:', savedPosition);
-      return savedPosition;
-    } else {
-      return new Promise((resolve) => {
-        console.log('Ustawiam scrollTop na:', 350); // Możesz użyć konkretnej liczby np. 350
-        resolve({ top: 350 }); // Spróbuj z konkretną liczbą
-      });
-    }
+
+    return (
+      savedPosition ||
+      new Promise((resolve) => {
+        setTimeout(() => resolve({ top: 400 }), 350);
+      })
+    );
+    // const scrollStore = useScrollStore();
+
+    //   document.addEventListener('scroll', () => {
+    //     scrollStore.setScrollPosition(window.scrollY);
+    //     console.log('Zapisano pozycję scrolla:', scrollStore.scrollPosition);
+    //   });
+
+    //   return {top: scrollStore.scrollPosition}
   },
-  
 });
 
 export default router;
