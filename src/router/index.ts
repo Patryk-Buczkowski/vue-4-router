@@ -64,17 +64,9 @@ const router = createRouter({
     return (
       savedPosition ||
       new Promise((resolve) => {
-        setTimeout(() => resolve({ top: 400 }), 350);
+        setTimeout(() => resolve({ top: scrollStore.scrollPosition }), 350);
       })
     );
-    // const scrollStore = useScrollStore();
-
-    //   document.addEventListener('scroll', () => {
-    //     scrollStore.setScrollPosition(window.scrollY);
-    //     console.log('Zapisano pozycję scrolla:', scrollStore.scrollPosition);
-    //   });
-
-    //   return {top: scrollStore.scrollPosition}
   },
 });
 
