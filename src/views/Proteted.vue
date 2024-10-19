@@ -19,9 +19,13 @@ const logout = () => {
 </script>
 
 <template>
-    <div>
-        <h1 class="bg-red-600">You are loged in {{ user }}</h1>
-        <button @click="logout">Logout</button>
+    <div class="flex flex-col items-center">
+        <h1 class="text-red-600">You are logged in {{ user }}</h1>
+        <button class="w-fit mb-2" @click="logout">Logout</button>
+
+        <RouterLink :to="{name: 'invoices'}">
+            <button>Invoices</button>
+        </RouterLink>
     </div>
 
 </template>

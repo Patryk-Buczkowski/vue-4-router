@@ -49,7 +49,7 @@ watch(
     </section>
 
     <section v-if="destination?.experiences.length" class="experiences">
-      <h2 class="text-red-700">Top experiences in {{ destination.name }}</h2>
+      <h2 class="text-lime-600">Top experiences in {{ destination.name }}</h2>
       <div class="cards">
         <RouterLink
           v-for="experience in destination.experiences"

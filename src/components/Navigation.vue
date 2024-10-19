@@ -8,7 +8,7 @@ const destinations = ref(sourceData.destinations)
 
 <template>
   <div id="nav">
-    <RouterLink id="logo" class="logo text-red-400" to="/">Travel App</RouterLink>
+    <RouterLink id="logo" class="logo" to="/">Travel App</RouterLink>
     <RouterLink
         v-for="destination in destinations"
         :key="destination.id"
@@ -23,7 +23,7 @@ const destinations = ref(sourceData.destinations)
 <style>
 #nav .active-link {
   scale: 125%;
-  color: blue;
+  color: #0000ff;
   border-bottom: 2px solid navy;
 }
 
