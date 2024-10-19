@@ -77,6 +77,11 @@ a {
   text-decoration: none;
   font-weight: bold;
 }
+
+a.external-link {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
 a:hover {
   color: #747bff;
 }
@@ -136,6 +141,14 @@ a:visited {
   color: white;
   opacity: 0.7;
   transition: 0.2 ease color;
+}
+
+#nav a.external-link.logo {  
+  color: greenyellow;
+}
+
+#nav a.internal-link {
+  color: #ffa;
 }
 #nav a.router-link-active,
 #nav a:hover {

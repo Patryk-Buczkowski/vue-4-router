@@ -2,7 +2,7 @@
 import { computed, onMounted, ref, watch } from "vue";
 import { useRoute } from "vue-router";
 import SourceData from "../data.json";
-import { getData } from "../components/api.ts";
+import { getData } from "../api.ts";
 import ExperiencesCard from "../components/ExperiencesCard.vue";
 
 const route = useRoute();

@@ -5,7 +5,7 @@ import {
   RouteLocationNormalized,
 } from "vue-router";
 import Home from "../views/Home.vue";
-import { getData } from "../components/api";
+import { getData } from "../api";
 import { useScrollStore } from "../stores/scrollStore";
 
 const checkUserAccess = async (id: string, slug: string) => {
@@ -17,7 +17,10 @@ const routes = [
   {
     path: "/protected",
     name: "protected",
-    component: () => import("../views/Proteted.vue"),
+    components: { 
+      default: () => import("../views/Proteted.vue"),
+      LeftSidebar: () => import('../components/LeftSidebar.vue')
+    },
     meta: {
       requiresAuth: true,
     },
@@ -30,7 +33,10 @@ const routes = [
   {
     path: "/invoices",
     name: "invoices",
-    component: () => import("../views/Invoices.vue"),
+    components: { 
+      default: () => import("../views/Invoices.vue"),
+      LeftSidebar: () => import('../components/LeftSidebar.vue')
+    },
     meta: {
       requiresAuth: true,
     },

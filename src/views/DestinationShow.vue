@@ -2,7 +2,7 @@
 import { computed, onMounted, ref, watch } from "vue";
 import { useRoute } from "vue-router";
 import SourceData from "../data.json";
-import { getData } from "../components/api.ts";
+import { getData } from "../api.ts";
 import ExperiencesCard from "../components/ExperiencesCard.vue";
 import GoBack from "../components/GoBack.vue";
 
@@ -13,9 +13,9 @@ const fetchData = async (slug) => {
   try {
     const res = await getData(slug);
     destination.value = res;
-  } catch (error) {    
+  } catch (error) {
     console.error("Error fetching data:", error);
-    destination.value = null;    
+    destination.value = null;
   }
 };
 
@@ -49,7 +49,7 @@ watch(
     </section>
 
     <section v-if="destination?.experiences.length" class="experiences">
-      <h2 class="text-lime-600">Top experiences in {{ destination.name }}</h2>
+      <h2 class="text-lime-600 mb-2">Top experiences in {{ destination.name }}</h2>
       <div class="cards">
         <RouterLink
           v-for="experience in destination.experiences"

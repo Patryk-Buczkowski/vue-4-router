@@ -1,6 +1,7 @@
 <script setup>
 import sourceData from "../data.json";
 import { computed, ref, watchEffect } from "vue";
+import AppLink from "./AppLink.vue";
 
 const destinations = ref(sourceData.destinations)
 
@@ -8,15 +9,16 @@ const destinations = ref(sourceData.destinations)
 
 <template>
   <div id="nav">
-    <RouterLink id="logo" class="logo" to="/">Travel App</RouterLink>
-    <RouterLink
+    <AppLink id="logo" class="logo" to="/">Travel App</AppLink>
+    <AppLink
         v-for="destination in destinations"
         :key="destination.id"
         :to="{name: 'destination.show', params:{id: destination.id, slug: destination.slug}}"
       >
         {{ destination.name }}
-      </RouterLink>
-      <RouterLink :to="{name: 'protected'}">DashBoard</RouterLink>
+      </AppLink>
+      <AppLink :to="{name: 'protected'}">DashBoard</AppLink>
+      <AppLink to="https://www.youtube.com/">You Tube</AppLink>
   </div>
 </template>
 

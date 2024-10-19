@@ -3,9 +3,14 @@ import router from "./router/index.ts";
 import "./style.css";
 import App from "./App.vue";
 import { createPinia } from "pinia";
+import AppLink from "./components/AppLink.vue";
 
-const pinia = createPinia()
+const app = createApp(App);
 
-createApp(App).use(pinia)
+const pinia = createPinia();
 
-createApp(App).use(router).mount("#app");
+app.use(pinia);             
+app.component("AppLink", AppLink);  
+app.use(router);            
+
+app.mount("#app");          
