@@ -15,6 +15,15 @@ const checkUserAccess = async (id: string, slug: string) => {
 const routes = [
   { path: "/", name: "Home", component: Home },
   {
+    path: "/protected",
+    name: "protected",
+    component: () => import("../views/Proteted.vue"),
+    meta: {
+      requiresAuth: true,
+    },
+  },
+  {path: "/login", name: 'login', component: () => import("../views/Login.vue") },
+  {
     path: "/destination/:id/:slug",
     name: "destination.show",
     component: () => import("../views/DestinationShow.vue"),
@@ -64,10 +73,17 @@ const router = createRouter({
     return (
       savedPosition ||
       new Promise((resolve) => {
-        setTimeout(() => resolve({ top: scrollStore.scrollPosition }), 350);
+        setTimeout(() => resolve({ top: scrollStore.scrollPosition }), 150);
       })
     );
   },
 });
+
+router.beforeEach((to, _from) => {
+  if (to.meta.requiresAuth && !window.user) {
+    return {name: 'login'}
+
+  }
+})
 
 export default router;

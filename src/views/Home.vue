@@ -15,7 +15,7 @@ const destinations = ref(sourceData.destinations)
         :key="destination.id"
         :to="{name: 'destination.show', params:{id: destination.id, slug: destination.slug}}"
       >
-        <h2>{{ destination.name }}</h2>
+        <h2 text->{{ destination.name }}</h2>
         <img :src="`/vue-4-router/images/${destination.image}`" :alt="destination.image" />
       </RouterLink>
     </div>
