@@ -13,7 +13,8 @@ const checkUserAccess = async (id: string, slug: string) => {
 };
 
 const routes = [
-  { path: "/", name: "Home", component: Home },
+  { path: "/", name: "Home", component: Home, alias: '/home' },
+  // { path: "/home", redirect: '/'},
   {
     path: "/protected",
     name: "protected",
@@ -42,7 +43,7 @@ const routes = [
     },
   },
   {
-    path: "/destination/:id/:slug",
+    path: "/destination/:id(\\d+)/:slug",
     name: "destination.show",
     component: () => import("../views/DestinationShow.vue"),
     beforeEnter: async (

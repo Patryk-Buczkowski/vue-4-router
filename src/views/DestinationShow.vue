@@ -66,3 +66,18 @@ watch(
     </section>
   </div>
 </template>
+
+<style lang="css">
+
+.destination-details {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  align-items: center;
+}
+.destination-details img {
+  border-radius: 4px;
+  border: 3px solid white;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+}
+</style>
